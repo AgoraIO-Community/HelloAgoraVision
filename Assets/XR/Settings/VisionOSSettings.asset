@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87fdc71f48fec416ba6b375d53aba3b8, type: 3}
   m_Name: VisionOSSettings
   m_EditorClassIdentifier: 
-  m_AppMode: 0
-  m_HandsTrackingUsageDescription: 
-  m_WorldSensingUsageDescription: 
-  m_RuntimeSettings: {fileID: 0}
+  m_AppMode: 1
+  m_HandsTrackingUsageDescription: hand tracking will be useful
+  m_WorldSensingUsageDescription: use world scene for gaming
+  m_RuntimeSettings: {fileID: 11400000, guid: daa62fc5ed36f4ac2a1e7b34196bf432, type: 2}
   m_UpperLimbVisibility: 0
   m_FoveatedRendering: 1
   m_IL2CPPLargeExeWorkaround: 0

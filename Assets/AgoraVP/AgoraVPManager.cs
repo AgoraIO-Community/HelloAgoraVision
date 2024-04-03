@@ -11,15 +11,15 @@ namespace Agora_RTC_Plugin.API_Example
         [Header("_____________Basic Configuration_____________")]
         [FormerlySerializedAs("APP_ID")]
         [SerializeField]
-        private string _appID = "";
+        protected string _appID = "";
 
         [FormerlySerializedAs("TOKEN")]
         [SerializeField]
-        private string _token = "";
+        protected string _token = "";
 
         [FormerlySerializedAs("CHANNEL_NAME")]
         [SerializeField]
-        private string _channelName = "";
+        protected string _channelName = "";
 
         [SerializeField]
         internal GameObject ViewContainerPrefab;
@@ -68,7 +68,7 @@ namespace Agora_RTC_Plugin.API_Example
             return _appID.Length > 10;
         }
 
-        private void InitEngine()
+        protected virtual void InitEngine()
         {
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
             UserEventHandler handler = new UserEventHandler(this);
@@ -79,7 +79,7 @@ namespace Agora_RTC_Plugin.API_Example
             RtcEngine.InitEventHandler(handler);
         }
 
-        private void SetBasicConfiguration()
+        protected virtual void SetBasicConfiguration()
         {
             RtcEngine.EnableAudio();
             RtcEngine.EnableVideo();
@@ -100,7 +100,7 @@ namespace Agora_RTC_Plugin.API_Example
 
         #region -- Button Events ---
 
-        public void JoinChannel()
+        public virtual void JoinChannel()
         {
             RtcEngine.JoinChannel(_token, _channelName);
         }
@@ -128,28 +128,11 @@ namespace Agora_RTC_Plugin.API_Example
             Debug.Log("UpdateChannelMediaOptions: " + nRet);
         }
 
-        public void AdjustVideoEncodedConfiguration640()
-        {
-            VideoEncoderConfiguration config = new VideoEncoderConfiguration();
-            config.dimensions = new VideoDimensions(640, 360);
-            config.frameRate = 15;
-            config.bitrate = 0;
-            RtcEngine.SetVideoEncoderConfiguration(config);
-        }
-
-        public void AdjustVideoEncodedConfiguration480()
-        {
-            VideoEncoderConfiguration config = new VideoEncoderConfiguration();
-            config.dimensions = new VideoDimensions(480, 480);
-            config.frameRate = 15;
-            config.bitrate = 0;
-            RtcEngine.SetVideoEncoderConfiguration(config);
-        }
         #endregion
 
         internal class UserEventHandler : IRtcEngineEventHandler
         {
-            private readonly AgoraVPManager _app;
+            protected readonly AgoraVPManager _app;
 
             internal UserEventHandler(AgoraVPManager videoSample)
             {
@@ -174,50 +157,23 @@ namespace Agora_RTC_Plugin.API_Example
                                     connection.channelId, connection.localUid, elapsed));
                 Vector3 pos = new Vector3(-2.5f, 0, 3.28f);
                 CreateUserView(0, connection.channelId, pos);
-
-                /*
-                var view = AgoraViewUtils.MakeVideoView(0, connection.channelId, AgoraViewUtils.DisplayContainerType.CustomMesh, _app.ViewContainerPrefab);
-                GameObject nobj = new GameObject();
-                nobj.name = view.name + "_parent";
-                nobj.transform.SetParent(_app.transform);
-                nobj.transform.localScale = 0.2f * Vector3.one;
-                nobj.transform.rotation = Quaternion.identity;
-
-                view.transform.SetParent(nobj.transform);
-                view.transform.localPosition = new Vector3(0, 0, 6);
-                */
-            }
-
-            public override void OnRejoinChannelSuccess(RtcConnection connection, int elapsed)
-            {
-                Debug.Log("OnRejoinChannelSuccess");
-            }
-
-            public override void OnLeaveChannel(RtcConnection connection, RtcStats stats)
-            {
-                Debug.Log("OnLeaveChannel");
-            }
-
-            public override void OnClientRoleChanged(RtcConnection connection, CLIENT_ROLE_TYPE oldRole, CLIENT_ROLE_TYPE newRole, ClientRoleOptions newRoleOptions)
-            {
-                Debug.Log("OnClientRoleChanged");
             }
 
             public override void OnUserJoined(RtcConnection connection, uint uid, int elapsed)
             {
                 Debug.Log(string.Format("OnUserJoined uid: ${0} elapsed: ${1}", uid, elapsed));
                 var count = _app.transform.childCount;
-                Vector3 pos = new Vector3(count * 2.5f, 0, 3.28f);
+                Vector3 pos = new Vector3(count * 1.5f, 0, 3.28f);
                 CreateUserView(uid, connection.channelId, pos);
             }
 
-            private void CreateUserView(uint uid, string channelId, Vector3 parentLocation)
+            protected virtual void CreateUserView(uint uid, string channelId, Vector3 parentLocation)
             {
                 var view = AgoraViewUtils.MakeVideoView(uid, channelId, AgoraViewUtils.DisplayContainerType.CustomMesh, _app.ViewContainerPrefab);
                 GameObject nobj = new GameObject();
                 nobj.name = view.name + "_parent";
                 nobj.transform.SetParent(_app.transform);
-                nobj.transform.localScale = 0.2f * Vector3.one;
+                nobj.transform.localScale = 0.3f * Vector3.one;
                 nobj.transform.localPosition = parentLocation;
                 nobj.transform.rotation = Quaternion.identity;
 
@@ -226,6 +182,7 @@ namespace Agora_RTC_Plugin.API_Example
                 view.transform.localPosition = Vector3.zero;
                 _app.ViewObjects[uid] = nobj;
             }
+
             public override void OnUserOffline(RtcConnection connection, uint uid, USER_OFFLINE_REASON_TYPE reason)
             {
                 Debug.Log(string.Format("OnUserOffLine uid: ${0}, reason: ${1}", uid,
@@ -234,15 +191,6 @@ namespace Agora_RTC_Plugin.API_Example
                 AgoraViewUtils.DestroyVideoView(uid);
             }
 
-            public override void OnUplinkNetworkInfoUpdated(UplinkNetworkInfo info)
-            {
-             //   Debug.Log("OnUplinkNetworkInfoUpdated");
-            }
-
-            public override void OnDownlinkNetworkInfoUpdated(DownlinkNetworkInfo info)
-            {
-             //   Debug.Log("OnDownlinkNetworkInfoUpdated");
-            }
         }
     }
 }

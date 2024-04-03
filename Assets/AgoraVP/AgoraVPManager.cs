@@ -55,7 +55,7 @@ namespace Agora_RTC_Plugin.API_Example
         private void OnDestroy()
         {
             Debug.Log("OnDestroy");
-            if (RtcEngine == null) return;
+            if (RtcEngine == null) return;  
             RtcEngine.InitEventHandler(null);
             RtcEngine.LeaveChannel();
             RtcEngine.Dispose();
@@ -63,7 +63,7 @@ namespace Agora_RTC_Plugin.API_Example
 
         private bool CheckAppId()
         {
-            Debug.Assert(_appID.Length > 10, "Please fill in your appId in API-Example/profile/appIdInput.asset");
+            Debug.Assert(_appID.Length > 10, $"Please fill in your appId in {gameObject.name}");
             Debug.Log("Running platform is " + Application.platform);
             return _appID.Length > 10;
         }

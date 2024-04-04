@@ -8,6 +8,7 @@ namespace Agora_RTC_Plugin.API_Example
 {
     public class AgoraVPManager : MonoBehaviour
     {
+        #region EDITOR INPUTS
         [Header("_____________Basic Configuration_____________")]
         [FormerlySerializedAs("APP_ID")]
         [SerializeField]
@@ -26,6 +27,7 @@ namespace Agora_RTC_Plugin.API_Example
 
         [SerializeField]
         GameObject TargetObject; // to be looked at
+        #endregion
 
         internal IRtcEngine RtcEngine = null;
 
@@ -41,12 +43,9 @@ namespace Agora_RTC_Plugin.API_Example
             }
         }
 
-
         // Update is called once per frame
         private void Update()
         {
-            PermissionHelper.RequestMicrophontPermission();
-            PermissionHelper.RequestCameraPermission();
             foreach(var ob in ViewObjects.Values) {
                 ob.transform.LookAt(TargetObject.transform);
 	        }
@@ -108,24 +107,6 @@ namespace Agora_RTC_Plugin.API_Example
         public void LeaveChannel()
         {
             RtcEngine.LeaveChannel();
-        }
-
-        public void StartPublish()
-        {
-            var options = new ChannelMediaOptions();
-            options.publishMicrophoneTrack.SetValue(true);
-            options.publishCameraTrack.SetValue(true);
-            var nRet = RtcEngine.UpdateChannelMediaOptions(options);
-            Debug.Log("UpdateChannelMediaOptions: " + nRet);
-        }
-
-        public void StopPublish()
-        {
-            var options = new ChannelMediaOptions();
-            options.publishMicrophoneTrack.SetValue(false);
-            options.publishCameraTrack.SetValue(false);
-            var nRet = RtcEngine.UpdateChannelMediaOptions(options);
-            Debug.Log("UpdateChannelMediaOptions: " + nRet);
         }
 
         #endregion

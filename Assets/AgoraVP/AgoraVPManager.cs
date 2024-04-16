@@ -91,7 +91,7 @@ namespace Agora_RTC_Plugin.API_Example
             RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
 
             // For now this private API is needed to make voice chat working
-            //if (Application.platform == RuntimePlatform.VisionOS)
+            if (Application.platform == RuntimePlatform.VisionOS)
             {
                 RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
             }

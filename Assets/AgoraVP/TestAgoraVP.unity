@@ -201,8 +201,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 645907078}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247954678
@@ -345,7 +344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 26042386}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &645907079
 MonoBehaviour:
@@ -543,7 +542,7 @@ MonoBehaviour:
   _channelName: visionpro
   ViewContainerPrefab: {fileID: 2820547527514769395, guid: 75c6f7aa2e73b4af3ac36c1b54be34a5,
     type: 3}
-  TargetObject: {fileID: 26042383}
+  TargetObject: {fileID: 645907075}
 --- !u!4 &1255208479
 Transform:
   m_ObjectHideFlags: 0
@@ -730,6 +729,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1382847940}
   - {fileID: 247954680}
+  - {fileID: 645907078}
   - {fileID: 26042386}
   - {fileID: 1295702588}
   - {fileID: 952600368}

@@ -158,7 +158,6 @@ namespace Agora_RTC_Plugin.API_Example
                 nobj.transform.localPosition = parentLocation;
                 nobj.transform.rotation = Quaternion.identity;
 
-                view.transform.Rotate(0f, 180.0f, 0.0f);
                 view.transform.SetParent(nobj.transform);
                 view.transform.localPosition = Vector3.zero;
                 _app.ViewObjects[uid] = nobj;

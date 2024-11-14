@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,87 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &26042383
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 26042386}
-  - component: {fileID: 26042385}
-  - component: {fileID: 26042384}
-  m_Layer: 0
-  m_Name: VolumnCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &26042384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26042383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b0e24161653434389cbc153211c7545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &26042385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26042383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33acc3b6f04fc124fa646203f42ed25f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Dimensions: {x: 1, y: 1, z: 1}
-  m_IsUniformScale: 0
-  m_OutputConfiguration: {fileID: 11400000, guid: 724776171a2184c16b69358d20ac9b90,
-    type: 2}
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  OpenWindowOnLoad: 1
-  m_ShowVolumeCameraEventsFoldout: 0
-  OnWindowEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowResized:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowFocused:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &26042386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26042383}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247954678
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,12 +302,67 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+--- !u!1 &775720791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 775720793}
+  - component: {fileID: 775720792}
+  m_Layer: 0
+  m_Name: VolumeCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &775720792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775720791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33acc3b6f04fc124fa646203f42ed25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Dimensions: {x: 0.25, y: 0.25, z: 0.25}
+  m_IsUniformScale: 0
+  m_OutputConfiguration: {fileID: 11400000, guid: 2646de714f4f049d99cac7e5c7b8a52c, type: 2}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  OpenWindowOnLoad: 1
+  m_ShowVolumeCameraEventsFoldout: 0
+  OnWindowEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &775720793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775720791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &952600364
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 952600364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.50075555, z: 0, w: 0.8655887}
-  m_LocalPosition: {x: 0.27, y: 2.36, z: 3.78}
+  m_LocalPosition: {x: 0.27, y: 3.36, z: 3.78}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -537,11 +510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14fa794cec784a24983b8dd924dccdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _appID: 00e97fd319264c1ea2be69a370bd712e
+  _appID: 
   _token: 
   _channelName: visionpro
-  ViewContainerPrefab: {fileID: 2820547527514769395, guid: 75c6f7aa2e73b4af3ac36c1b54be34a5,
-    type: 3}
+  ViewContainerPrefab: {fileID: 2820547527514769395, guid: 75c6f7aa2e73b4af3ac36c1b54be34a5, type: 3}
   TargetObject: {fileID: 645907075}
 --- !u!4 &1255208479
 Transform:
@@ -730,7 +702,7 @@ SceneRoots:
   - {fileID: 1382847940}
   - {fileID: 247954680}
   - {fileID: 645907078}
-  - {fileID: 26042386}
   - {fileID: 1295702588}
   - {fileID: 952600368}
   - {fileID: 1255208479}
+  - {fileID: 775720793}

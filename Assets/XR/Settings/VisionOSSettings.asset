@@ -18,4 +18,7 @@ MonoBehaviour:
   m_RuntimeSettings: {fileID: 11400000, guid: daa62fc5ed36f4ac2a1e7b34196bf432, type: 2}
   m_UpperLimbVisibility: 0
   m_FoveatedRendering: 1
+  m_VRImmersionStyle: 0
+  m_MRImmersionStyle: 0
   m_IL2CPPLargeExeWorkaround: 0
+  m_SkipPresentToMainScreen: 1
